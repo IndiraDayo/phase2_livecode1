@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <div id="app">
+   <div id="app">
     <!-- Navigation -->
     <div class="navbar bg-dark fixed-top">
       <div class="container">
@@ -25,7 +25,8 @@
         <div class="header-right">
           <input type="text" placeholder="email">
           <input type="password" placeholder="password">
-          <button>Login</button>
+          <button v-if="loginSeen">Login</button>
+          <button>Logout</button>
         </div>
       </div>
     </div>
@@ -159,16 +160,30 @@
       </div>
       <!-- /.container -->
     </footer>
-    </div>
-    <script>
+   </div>
+   <script>
+        // var axios = require('axios')
 
         var app = new Vue({
             el: '#app',
             data: {
-                message: 'testing'
+                message: 'testing',
+                loginSeen: false
+            },
+            methods: {
+                toggleLogin() {
+                    if (this.loginSeen === true) {
+                        this.loginSeen = false
+                    }
+                    else (this.loginSeen === false) {
+                        this.loginSeen = true
+                    }
+                }
             }
+
+
         })
-    </script>
+   </script>
   </body>
 
 </html>
